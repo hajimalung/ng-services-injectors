@@ -5,17 +5,17 @@ import { LoggingService } from '../services/logging.service';
 @Component({
   selector: 'app-account',
   templateUrl: './account.component.html',
-  styleUrls: ['./account.component.css'],
-  providers : [LoggingService]
+  styleUrls: ['./account.component.css']
+  //providers : [LoggingService]
 })
 export class AccountComponent {
   @Input() account: {name: string, status: string};
   @Input() id: number;
   
-  constructor(private logger : LoggingService, private accountsService: AccountsService){}
+  constructor(private accountsService: AccountsService){}
 
   onSetTo(status: string) {
     this.accountsService.updateAccount({id:this.id,newStatus:status});
-    this.logger.logStatusChange(status);
+    //this.logger.logStatusChange(status);
   }
 }
